@@ -29,7 +29,7 @@ apiVersion: batch/v1
 kind: Job
 metadata:
   name: open-appsec-open-appsec-k8s-nginx-ingress-admission-patch
-  namespace: choreo-external-ingress-class
+  namespace: choreo-ingress-controllers
 spec:
   template:
     spec:
