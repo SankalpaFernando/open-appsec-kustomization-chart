@@ -60,13 +60,13 @@ controller:
     runAsNonRoot: true
     runAsUser: 65532
     runAsGroup: 65532
-    allowPrivilegeEscalation: false
+    # allowPrivilegeEscalation: false
     seccompProfile:
       type: RuntimeDefault
-    capabilities:
-      drop:
-        - ALL
-    readOnlyRootFilesystem: true
+    # capabilities:
+    #   drop:
+    #     - ALL
+    # readOnlyRootFilesystem: true
   # containerSecurityContext:
   #   runAsNonRoot: true
   #   runAsUser: 65532
