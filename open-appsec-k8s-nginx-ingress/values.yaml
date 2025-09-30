@@ -1258,7 +1258,7 @@ appsec:
   name: open-appsec
   image:
     #registry:
-    repository: choreocontrolplane.azurecr.io
+    repository: ghcr.io/openappsec
     image: "agent"
     tag: "1.1.29"
     pullPolicy: Always
@@ -1272,8 +1272,8 @@ appsec:
       # runAsUser: 1000
   nginx:
     image:
-      repository: "choreocontrolplane.azurecr.io/openappsec-nginx-attachment"
-      tag: "1.0.0"
+      repository: "sankalpafernando/openappsec-nginx-attachment"
+      tag: "v3"
   configMapName: appsec-settings-configmap
   configMapContent:
     crowdsec:
