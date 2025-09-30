@@ -18,8 +18,8 @@
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
-  name: open-appsec-postgresql
-  namespace: default
+  name: open-appsec-k8s-nginx-ingress-postgresql
+  namespace: dev-choreo-system-nginx-ingress
 spec:
   template:
     spec:

@@ -15,20 +15,8 @@
 # limitations under the License.
 # -----------------------------------------------------------------------
 
-apiVersion: rbac.authorization.k8s.io/v1
-kind: Role
+apiVersion: networking.k8s.io/v1
+kind: IngressClass
 metadata:
-  name: open-appsec-open-appsec-k8s-nginx-ingress-admission
-  namespace: choreo-ingress-controllers
-rules:
-  - apiGroups:
-      - ""
-    resources:
-      - secrets
-    resourceNames:
-      - appsec-settings-secret
-      - choreo-dev-wildcard-tls-secret
-      - open-appsec-open-appsec-k8s-nginx-ingress-admission
-    verbs:
-      - get
-      - create
+  name: dev-choreo-system-nginx
+$patch: delete

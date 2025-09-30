@@ -2,6 +2,6 @@
   {
     "op": "replace",
     "path": "/metadata/namespace",
-    "value": "choreo-ingress-controllers"
+    "value": "dev-choreo-system-nginx-ingress"
   }
 ]

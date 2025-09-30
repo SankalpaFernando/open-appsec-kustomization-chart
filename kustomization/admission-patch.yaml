@@ -1,5 +1,5 @@
 # --------------------------------------------------------------------
-# 
+#
 # Copyright (c) 2022, WSO2 Inc. (http://wso2.com) All Rights Reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,8 +15,22 @@
 # limitations under the License.
 # -----------------------------------------------------------------------
 
-apiVersion: networking.k8s.io/v1
-kind: IngressClass
+apiVersion: batch/v1
+kind: Job
 metadata:
-  name: choreo-external-ingress-class
-$patch: delete
+  name: open-appsec-k8s-nginx-ingress-admission-create
+  namespace: dev-choreo-system-nginx-ingress
+spec:
+  template:
+    spec:
+      automountServiceAccountToken: false
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: open-appsec-k8s-nginx-ingress-admission-patch
+  namespace: dev-choreo-system-nginx-ingress
+spec:
+  template:
+    spec:
+      automountServiceAccountToken: false
