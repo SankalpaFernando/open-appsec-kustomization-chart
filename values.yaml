@@ -56,23 +56,6 @@ defaultBackend:
         - ALL
     readOnlyRootFilesystem: true
 controller:
-  podSecurityContext:
-    runAsNonRoot: false
-    runAsUser: 0
-    runAsGroup: 0
-    seccompProfile:
-      type: RuntimeDefault
-  containerSecurityContext:
-    runAsNonRoot: false
-    runAsUser: 0
-    runAsGroup: 0
-    allowPrivilegeEscalation: true
-    seccompProfile:
-      type: RuntimeDefault
-    capabilities:
-      drop:
-        - ALL
-    readOnlyRootFilesystem: true
   resources:
     requests:
       cpu: "100m"
@@ -97,15 +80,6 @@ controller:
         limits:
           cpu: "200m"
           memory: "256Mi"
-    patch:
-      securityContext:
-        runAsNonRoot: false
-        runAsUser: 0
-        runAsGroup: 0
-        seccompProfile:
-          type: RuntimeDefault
-      serviceAccount:
-          automountServiceAccountToken: true
   livenessProbe:
     httpGet:
       path: /healthz
