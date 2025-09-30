@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: open-appsec-k8s-nginx-ingress-controller
+  name: open-appsec-open-appsec-k8s-nginx-ingress-controller
   namespace: choreo-ingress-controllers
 spec:
   template:

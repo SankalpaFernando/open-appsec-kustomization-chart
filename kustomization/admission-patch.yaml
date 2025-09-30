@@ -18,7 +18,7 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: open-appsec-k8s-nginx-ingress-admission-create
+  name: open-appsec-open-appsec-k8s-nginx-ingress-admission-create
   namespace: choreo-ingress-controllers
 spec:
   template:
@@ -28,7 +28,7 @@ spec:
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: open-appsec-k8s-nginx-ingress-admission-patch
+  name: open-appsec-open-appsec-k8s-nginx-ingress-admission-patch
   namespace: choreo-ingress-controllers
 spec:
   template:
