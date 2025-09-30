@@ -14,7 +14,7 @@ resources:
 
 patchesStrategicMerge:
   - ingressremover.yaml
-  - admission-patch.yaml
+  # - admission-patch.yaml
   - service-account-patch.yaml
   - cluster-role-patch.yaml
   - postgres-patch.yaml
