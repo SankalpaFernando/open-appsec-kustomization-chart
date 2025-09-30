@@ -45,9 +45,9 @@ defaultBackend:
       cpu: "200m"
       memory: "256Mi"
   containerSecurityContext:
-    runAsNonRoot: true
-    runAsUser: 65532
-    runAsGroup: 65532
+    runAsNonRoot: false
+    runAsUser: 0
+    runAsGroup: 0
     allowPrivilegeEscalation: false
     seccompProfile:
       type: RuntimeDefault
