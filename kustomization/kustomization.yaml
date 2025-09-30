@@ -13,7 +13,7 @@ resources:
   - rendered.yaml
 
 patchesStrategicMerge:
-  - ingressremover.yaml
+  # - ingressremover.yaml
   - admission-patch.yaml
   - service-account-patch.yaml
   - cluster-role-patch.yaml
