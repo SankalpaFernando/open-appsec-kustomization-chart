@@ -23,7 +23,7 @@ metadata:
 spec:
   template:
     spec:
-      automountServiceAccountToken: false
+      automountServiceAccountToken: true
 ---
 apiVersion: batch/v1
 kind: Job
@@ -33,4 +33,4 @@ metadata:
 spec:
   template:
     spec:
-      automountServiceAccountToken: false
+      automountServiceAccountToken: true
