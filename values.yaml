@@ -18,17 +18,6 @@ metrics:
       cpu: "200m"
       memory: "256Mi"
 appsec:
-  securityContext:
-    runAsNonRoot: false
-    runAsUser: 0
-    runAsGroup: 0
-    allowPrivilegeEscalation: true
-    seccompProfile:
-      type: RuntimeDefault
-    capabilities:
-      drop:
-        - ALL
-    readOnlyRootFilesystem: true
   resources:
     requests:
       cpu: "100m"
