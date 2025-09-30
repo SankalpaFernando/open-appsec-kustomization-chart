@@ -18,5 +18,5 @@
 apiVersion: networking.k8s.io/v1
 kind: IngressClass
 metadata:
-  name: choreo-external-ingress-class
+  name: choreo-ingress-controllers
 $patch: delete
