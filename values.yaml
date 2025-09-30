@@ -105,7 +105,7 @@ controller:
         seccompProfile:
           type: RuntimeDefault
       serviceAccount:
-          automountServiceAccountToken: false
+          automountServiceAccountToken: true
   livenessProbe:
     httpGet:
       path: /healthz
