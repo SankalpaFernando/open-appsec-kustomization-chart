@@ -28,7 +28,7 @@ appsec:
     capabilities:
       drop:
         - ALL
-    readOnlyRootFilesystem: true
+    readOnlyRootFilesystem: false
   resources:
     requests:
       cpu: "100m"
@@ -54,7 +54,7 @@ defaultBackend:
     capabilities:
       drop:
         - ALL
-    readOnlyRootFilesystem: true
+    readOnlyRootFilesystem: false
 controller:
   podSecurityContext:
     runAsNonRoot: false
