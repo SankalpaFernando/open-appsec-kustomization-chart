@@ -102,7 +102,7 @@ controller:
         limits:
           cpu: "200m"
           memory: "256Mi"
-    patch:
+    # patch:
       # securityContext:
       #   runAsNonRoot: true
       #   runAsUser: 65532
