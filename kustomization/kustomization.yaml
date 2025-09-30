@@ -17,7 +17,7 @@ patchesStrategicMerge:
   - admission-patch.yaml
   - service-account-patch.yaml
   - cluster-role-patch.yaml
-  - postgres-patch.yaml
+  # - postgres-patch.yaml
   - controller-patch.yaml
 patches:
   - path: namespace-patch.json
