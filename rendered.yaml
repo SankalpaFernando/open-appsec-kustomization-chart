@@ -12,7 +12,7 @@ metadata:
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/component: controller
   name: open-appsec-open-appsec-k8s-nginx-ingress
-  namespace: dev-choreo-system-nginx-ingress
+  namespace: choreo-ingress-controllers
 automountServiceAccountToken: true
 ---
 # Source: open-appsec-k8s-nginx-ingress/charts/postgresql/templates/secrets.yaml
@@ -36,7 +36,7 @@ apiVersion: v1
 kind: Secret
 metadata:
   name: "appsec-settings-secret"
-  namespace: dev-choreo-system-nginx-ingress
+  namespace: choreo-ingress-controllers
 data:
   CROWDSEC_AUTH_DATA: MDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDA=
 ---
@@ -45,7 +45,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: "appsec-settings-configmap"
-  namespace: dev-choreo-system-nginx-ingress
+  namespace: choreo-ingress-controllers
 data:
   CROWDSEC_ENABLED: "false"
   CROWDSEC_API_URL: http://crowdsec-service:8080/v1/decisions/stream
@@ -66,7 +66,7 @@ metadata:
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/component: controller
   name: open-appsec-open-appsec-k8s-nginx-ingress-controller
-  namespace: dev-choreo-system-nginx-ingress
+  namespace: choreo-ingress-controllers
 data:
 ---
 # Source: open-appsec-k8s-nginx-ingress/templates/clusterrole.yaml
@@ -180,7 +180,7 @@ roleRef:
 subjects:
   - kind: ServiceAccount
     name: open-appsec-open-appsec-k8s-nginx-ingress
-    namespace: dev-choreo-system-nginx-ingress
+    namespace: choreo-ingress-controllers
   - kind: ServiceAccount
     name: tuning-svc-account
     namespace: "default"
@@ -198,7 +198,7 @@ metadata:
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/component: controller
   name: open-appsec-open-appsec-k8s-nginx-ingress
-  namespace: dev-choreo-system-nginx-ingress
+  namespace: choreo-ingress-controllers
 rules:
   - apiGroups:
       - ""
@@ -309,7 +309,7 @@ metadata:
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/component: controller
   name: open-appsec-open-appsec-k8s-nginx-ingress
-  namespace: dev-choreo-system-nginx-ingress
+  namespace: choreo-ingress-controllers
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: Role
@@ -317,7 +317,7 @@ roleRef:
 subjects:
   - kind: ServiceAccount
     name: open-appsec-open-appsec-k8s-nginx-ingress
-    namespace: dev-choreo-system-nginx-ingress
+    namespace: choreo-ingress-controllers
 ---
 # Source: open-appsec-k8s-nginx-ingress/charts/postgresql/templates/primary/svc-headless.yaml
 apiVersion: v1
@@ -390,7 +390,7 @@ metadata:
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/component: controller
   name: open-appsec-open-appsec-k8s-nginx-ingress-controller-admission
-  namespace: dev-choreo-system-nginx-ingress
+  namespace: choreo-ingress-controllers
 spec:
   type: ClusterIP
   ports:
@@ -417,7 +417,7 @@ metadata:
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/component: controller
   name: open-appsec-open-appsec-k8s-nginx-ingress-controller
-  namespace: dev-choreo-system-nginx-ingress
+  namespace: choreo-ingress-controllers
 spec:
   type: LoadBalancer
   externalTrafficPolicy: Local
@@ -453,7 +453,7 @@ metadata:
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/component: controller
   name: open-appsec-open-appsec-k8s-nginx-ingress-controller
-  namespace: dev-choreo-system-nginx-ingress
+  namespace: choreo-ingress-controllers
   annotations: 
     checkov.io/skip1: CKV_K8S_20=Default is set by NIC
     checkov.io/skip2: CKV_K8S_38=Default is set by NIC
@@ -900,7 +900,7 @@ webhooks:
     clientConfig:
       service:
         name: open-appsec-open-appsec-k8s-nginx-ingress-controller-admission
-        namespace: dev-choreo-system-nginx-ingress
+        namespace: choreo-ingress-controllers
         port: 443
         path: /networking/v1/ingresses
 ---
@@ -909,7 +909,7 @@ apiVersion: v1
 kind: ServiceAccount
 metadata:
   name: open-appsec-open-appsec-k8s-nginx-ingress-admission
-  namespace: dev-choreo-system-nginx-ingress
+  namespace: choreo-ingress-controllers
   annotations:
     "helm.sh/hook": pre-install,pre-upgrade,post-install,post-upgrade
     "helm.sh/hook-delete-policy": before-hook-creation,hook-succeeded
@@ -971,14 +971,14 @@ roleRef:
 subjects:
   - kind: ServiceAccount
     name: open-appsec-open-appsec-k8s-nginx-ingress-admission
-    namespace: dev-choreo-system-nginx-ingress
+    namespace: choreo-ingress-controllers
 ---
 # Source: open-appsec-k8s-nginx-ingress/templates/admission-webhooks/job-patch/role.yaml
 apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
   name: open-appsec-open-appsec-k8s-nginx-ingress-admission
-  namespace: dev-choreo-system-nginx-ingress
+  namespace: choreo-ingress-controllers
   annotations:
     "helm.sh/hook": pre-install,pre-upgrade,post-install,post-upgrade
     "helm.sh/hook-delete-policy": before-hook-creation,hook-succeeded
@@ -1004,7 +1004,7 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
   name: open-appsec-open-appsec-k8s-nginx-ingress-admission
-  namespace: dev-choreo-system-nginx-ingress
+  namespace: choreo-ingress-controllers
   annotations:
     "helm.sh/hook": pre-install,pre-upgrade,post-install,post-upgrade
     "helm.sh/hook-delete-policy": before-hook-creation,hook-succeeded
@@ -1023,14 +1023,14 @@ roleRef:
 subjects:
   - kind: ServiceAccount
     name: open-appsec-open-appsec-k8s-nginx-ingress-admission
-    namespace: dev-choreo-system-nginx-ingress
+    namespace: choreo-ingress-controllers
 ---
 # Source: open-appsec-k8s-nginx-ingress/templates/admission-webhooks/job-patch/job-createSecret.yaml
 apiVersion: batch/v1
 kind: Job
 metadata:
   name: open-appsec-open-appsec-k8s-nginx-ingress-admission-create
-  namespace: dev-choreo-system-nginx-ingress
+  namespace: choreo-ingress-controllers
   annotations:
     "helm.sh/hook": pre-install,pre-upgrade
     "helm.sh/hook-delete-policy": before-hook-creation,hook-succeeded
@@ -1109,7 +1109,7 @@ apiVersion: batch/v1
 kind: Job
 metadata:
   name: open-appsec-open-appsec-k8s-nginx-ingress-admission-patch
-  namespace: dev-choreo-system-nginx-ingress
+  namespace: choreo-ingress-controllers
   annotations:
     "helm.sh/hook": post-install,post-upgrade
     "helm.sh/hook-delete-policy": before-hook-creation,hook-succeeded
