@@ -792,13 +792,6 @@ controller:
         runAsNonRoot: true
         runAsUser: 65532
         runAsGroup: 65532
-        allowPrivilegeEscalation: false
-        seccompProfile:
-          type: RuntimeDefault
-        capabilities:
-          drop:
-            - ALL
-        readOnlyRootFilesystem: true
       resources: {}
       # limits:
       #   cpu: 10m
@@ -860,13 +853,8 @@ controller:
         runAsNonRoot: true
         runAsUser: 65532
         runAsGroup: 65532
-        allowPrivilegeEscalation: false
         seccompProfile:
           type: RuntimeDefault
-        capabilities:
-          drop:
-            - ALL
-        readOnlyRootFilesystem: true
       # -- Admission webhook patch job RBAC
       rbac:
         # -- Create RBAC or not
