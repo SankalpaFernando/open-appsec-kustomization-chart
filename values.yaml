@@ -19,16 +19,16 @@ metrics:
       memory: "256Mi"
 appsec:
   securityContext:
-    runAsNonRoot: false
-    runAsUser: 0
-    runAsGroup: 0
+    runAsNonRoot: true
+    runAsUser: 65532
+    runAsGroup: 65532
     allowPrivilegeEscalation: false
     seccompProfile:
       type: RuntimeDefault
     capabilities:
       drop:
         - ALL
-    readOnlyRootFilesystem: false
+    readOnlyRootFilesystem: true
   resources:
     requests:
       cpu: "100m"
@@ -45,39 +45,34 @@ defaultBackend:
       cpu: "200m"
       memory: "256Mi"
   containerSecurityContext:
-    runAsNonRoot: false
-    runAsUser: 0
-    runAsGroup: 0
+    runAsNonRoot: true
+    runAsUser: 65532
+    runAsGroup: 65532
     allowPrivilegeEscalation: false
     seccompProfile:
       type: RuntimeDefault
     capabilities:
       drop:
         - ALL
-    readOnlyRootFilesystem: false
+    readOnlyRootFilesystem: true
 controller:
   podSecurityContext:
-    runAsNonRoot: false
-    runAsUser: 0
-    runAsGroup: 0
-    # allowPrivilegeEscalation: false
+    runAsNonRoot: true
+    runAsUser: 65532
+    runAsGroup: 65532
     seccompProfile:
       type: RuntimeDefault
-    # capabilities:
-    #   drop:
-    #     - ALL
-    # readOnlyRootFilesystem: true
   containerSecurityContext:
-    runAsNonRoot: false
-    runAsUser: 0
-    runAsGroup: 0
-    # allowPrivilegeEscalation: false
+    runAsNonRoot: true
+    runAsUser: 65532
+    runAsGroup: 65532
+    allowPrivilegeEscalation: false
     seccompProfile:
       type: RuntimeDefault
-    # capabilities:
-    #   drop:
-    #     - ALL
-    # readOnlyRootFilesystem: true
+    capabilities:
+      drop:
+        - ALL
+    readOnlyRootFilesystem: true
   resources:
     requests:
       cpu: "100m"
@@ -102,20 +97,15 @@ controller:
         limits:
           cpu: "200m"
           memory: "256Mi"
-    # patch:
-      # securityContext:
-      #   runAsNonRoot: true
-      #   runAsUser: 65532
-      #   runAsGroup: 65532
-      #   allowPrivilegeEscalation: false
-      #   seccompProfile:
-      #     type: RuntimeDefault
-      #   capabilities:
-      #     drop:
-      #       - ALL
-      #   readOnlyRootFilesystem: true
-      # serviceAccount:
-      #     automountServiceAccountToken: false
+    patch:
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 65532
+        runAsGroup: 65532
+        seccompProfile:
+          type: RuntimeDefault
+      serviceAccount:
+          automountServiceAccountToken: false
   livenessProbe:
     httpGet:
       path: /healthz
