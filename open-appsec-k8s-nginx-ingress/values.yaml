@@ -12,7 +12,7 @@ global:
 # fullnameOverride:
 
 # -- Override the deployment namespace; defaults to .Release.Namespace
-namespaceOverride: "choreo-ingress-controllers"
+namespaceOverride: ""
 ## Labels to apply to all resources
 ##
 commonLabels: {}
@@ -126,7 +126,7 @@ controller:
   # We do not support namespaced IngressClasses, yet, so a ClusterRole and a ClusterRoleBinding is required.
   ingressClassResource:
     # -- Name of the IngressClass
-    name: choreo-external-ingress-class
+    name: nginx
     # -- Create the IngressClass or not
     enabled: true
     # -- If true, Ingresses without `ingressClassName` get assigned to this IngressClass on creation.
@@ -138,7 +138,7 @@ controller:
     # -- Controller of the IngressClass. An Ingress Controller looks for IngressClasses it should reconcile by this value.
     # This value is also being set as the `--controller-class` argument of this Ingress Controller.
     # Ref: https://kubernetes.io/docs/concepts/services-networking/ingress/#ingress-class
-    controllerValue: k8s.io/appsec-nginx
+    controllerValue: k8s.io/ingress-nginx
     # -- Aliases of this IngressClass. Creates copies with identical settings but the respective alias as name.
     # Useful for development environments with only one Ingress Controller but production-like Ingress resources.
     # `default` gets enabled on the original IngressClass only.
@@ -156,7 +156,7 @@ controller:
     #   name: external-lb
   # -- For backwards compatibility with ingress.class annotation, use ingressClass.
   # Algorithm is as follows, first ingressClassName is considered, if not present, controller looks for ingress.class annotation
-  ingressClass: choreo-external-ingress-class
+  ingressClass: nginx
   # -- Labels to add to the pod container metadata
   podLabels: {}
   #  key: value
@@ -179,7 +179,7 @@ controller:
     enabled: true
     # -- Allows overriding of the publish service to bind to
     # Must be <namespace>/<service_name>
-    pathOverride: "choreo-ingress-controllers/choreo-external-ingress-controller"
+    pathOverride: ""
   # Limit the scope of the controller to a specific namespace
   scope:
     # -- Enable 'scope' or not
@@ -206,11 +206,7 @@ controller:
   maxmindLicenseKey: ""
   # -- Additional command line arguments to pass to Ingress-Nginx Controller
   # E.g. to specify the default SSL certificate you can use
-  extraArgs: {
-    default-ssl-certificate: "choreo-ingress-controllers/choreo-dev-wildcard-tls-secret",
-    configmap: "choreo-ingress-controllers/choreo-external-ingress-controller",
-    election-id: "open-appsec-ingress-leader"
-  }
+  extraArgs: {}
   ## extraArgs:
   ##   default-ssl-certificate: "<namespace>/<secret_name>"
   ##   time-buckets: "0.005,0.01,0.025,0.05,0.1,0.25,0.5,1,2.5,5,10"
@@ -230,14 +226,7 @@ controller:
   kind: Deployment
   # -- Annotations to be added to the controller Deployment or DaemonSet
   ##
-  annotations: {
-    "checkov.io/skip1":"CKV_K8S_20=Default is set by NIC",
-    "checkov.io/skip2":"CKV_K8S_38=Default is set by NIC",
-    "checkov.io/skip3":"CKV_K8S_25=Default is set by NIC",
-    "checkov.io/skip4":"CKV_K8S_22=Default is set by NIC",
-    "checkov.io/skip5":"CKV_K8S_40=Default is set by NIC",
-    "checkov.io/skip6":"CKV_K8S_AZURE_WSO2_2=Default is set by NIC"
-  }
+  annotations: {}
   #  keel.sh/pollSchedule: "@every 60m"
 
   # -- Labels to be added to the controller Deployment or DaemonSet and other resources that do not have option to specify labels
@@ -406,9 +395,9 @@ controller:
   ## Ideally, there should be no limits.
   ## https://engineering.indeedblog.com/blog/2019/12/cpu-throttling-regression-fix/
   resources:
-    limits:
-      cpu: 100m
-      memory: 90Mi
+    ##  limits:
+    ##    cpu: 100m
+    ##    memory: 90Mi
     requests:
       cpu: 100m
       memory: 90Mi
@@ -533,7 +522,7 @@ controller:
 
     # -- External traffic policy of the external controller service. Set to "Local" to preserve source IP on providers supporting it.
     # Ref: https://kubernetes.io/docs/tasks/access-application-cluster/create-external-load-balancer/#preserving-the-client-source-ip
-    externalTrafficPolicy: "Local"
+    externalTrafficPolicy: ""
     # -- Session affinity of the external controller service. Must be either "None" or "ClientIP" if set. Defaults to "None".
     # Ref: https://kubernetes.io/docs/reference/networking/virtual-ips/#session-affinity
     sessionAffinity: ""
@@ -792,6 +781,13 @@ controller:
         runAsNonRoot: true
         runAsUser: 65532
         runAsGroup: 65532
+        allowPrivilegeEscalation: false
+        seccompProfile:
+          type: RuntimeDefault
+        capabilities:
+          drop:
+            - ALL
+        readOnlyRootFilesystem: true
       resources: {}
       # limits:
       #   cpu: 10m
@@ -815,13 +811,7 @@ controller:
           drop:
             - ALL
         readOnlyRootFilesystem: true
-      resources:
-        requests:
-          cpu: "100m"
-          memory: "128Mi"
-        limits:
-          cpu: "500m"
-          memory: "512Mi"
+      resources: {}
     patch:
       enabled: true
       image:
@@ -849,12 +839,7 @@ controller:
       # -- Labels to be added to patch job resources
       labels: {}
       # -- Security context for secret creation & webhook patch pods
-      securityContext:
-        runAsNonRoot: true
-        runAsUser: 65532
-        runAsGroup: 65532
-        seccompProfile:
-          type: RuntimeDefault
+      securityContext: {}
       # -- Admission webhook patch job RBAC
       rbac:
         # -- Create RBAC or not
@@ -866,7 +851,7 @@ controller:
         # -- Custom service account name
         name: ""
         # -- Auto-mount service account token or not
-        automountServiceAccountToken: false
+        automountServiceAccountToken: true
     # Use certmanager to generate webhook certs
     certManager:
       enabled: false
@@ -1272,8 +1257,8 @@ appsec:
       # runAsUser: 1000
   nginx:
     image:
-      repository: "sankalpafernando/openappsec-nginx-attachment"
-      tag: "v3"
+      repository: "ghcr.io/openappsec/nginx-ingress-attachment"
+      tag: "1.1.29"
   configMapName: appsec-settings-configmap
   configMapContent:
     crowdsec:
@@ -1311,7 +1296,7 @@ appsec:
 
   #proxy:
 
-  playground: true
+  playground: false
 
   persistence:
     ## open-appsec data Persistent Volume Storage Class
@@ -1346,17 +1331,29 @@ appsec:
   learning:
     name: learning
     replicas: 1
+    image:
+      registry: ghcr.io/openappsec
+      image: smartsync
+      tag: latest
     nodeSelector: {}
     tolerations: []
 
   storage:
     name: shared-storage
     replicas: 1
+    image:
+      registry: ghcr.io/openappsec
+      image: smartsync-shared-files
+      tag: latest
     nodeSelector: {}
     tolerations: []
 
   tuning:
     name: tuning
+    image:
+      registry: ghcr.io/openappsec
+      image: smartsync-tuning
+      tag: latest
     enabled: false
     replicaCount: 1
     securityContext:
