@@ -1,0 +1,9 @@
+controller:
+
+  service:
+    type: ClusterIP
+
+  kind: Deployment
+
+  metrics:
+    enabled: true
