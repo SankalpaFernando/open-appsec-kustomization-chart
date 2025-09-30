@@ -22,13 +22,8 @@ appsec:
     runAsNonRoot: true
     runAsUser: 65532
     runAsGroup: 65532
-    allowPrivilegeEscalation: false
     seccompProfile:
       type: RuntimeDefault
-    capabilities:
-      drop:
-        - ALL
-    readOnlyRootFilesystem: true
   resources:
     requests:
       cpu: "100m"
@@ -48,13 +43,8 @@ defaultBackend:
     runAsNonRoot: true
     runAsUser: 65532
     runAsGroup: 65532
-    allowPrivilegeEscalation: false
     seccompProfile:
       type: RuntimeDefault
-    capabilities:
-      drop:
-        - ALL
-    readOnlyRootFilesystem: true
 controller:
   podSecurityContext:
     runAsNonRoot: true
@@ -97,13 +87,8 @@ controller:
         runAsNonRoot: true
         runAsUser: 65532
         runAsGroup: 65532
-        allowPrivilegeEscalation: false
         seccompProfile:
           type: RuntimeDefault
-        capabilities:
-          drop:
-            - ALL
-        readOnlyRootFilesystem: true
       serviceAccount:
           automountServiceAccountToken: false
   livenessProbe:
