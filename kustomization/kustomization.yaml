@@ -11,6 +11,7 @@
 
 resources:
   - rendered.yaml
+  - open-appsec-policy.yaml
 
 patchesStrategicMerge:
   # - ingressremover.yaml
