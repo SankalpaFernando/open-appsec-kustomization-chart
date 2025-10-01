@@ -30,11 +30,11 @@ appsec:
       type: RuntimeDefault
   resources:
     requests:
-      cpu: 100m
-      memory: 150Mi
+      cpu: 500m
+      memory: 500Mi
     limits:
-      cpu: 200m
-      memory: 300Mi
+      cpu: 500m
+      memory: 500Mi
   nginx:
     image:
       repository: "sankalpafernando/openappsec-nginx-attachment"
