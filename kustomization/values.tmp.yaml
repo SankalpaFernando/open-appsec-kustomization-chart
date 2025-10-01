@@ -40,7 +40,7 @@ appsec:
       repository: "sankalpafernando/openappsec-nginx-attachment"
       tag: "v3"
 
-defaultBackend:
+# defaultBackend:
   # resources:
   #   requests:
   #     cpu: "100m"
