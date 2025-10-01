@@ -31,10 +31,10 @@ appsec:
   resources:
     requests:
       cpu: 100m
-      memory: 128Mi
+      memory: 150Mi
     limits:
       cpu: 200m
-      memory: 256Mi
+      memory: 300Mi
   nginx:
     image:
       repository: "sankalpafernando/openappsec-nginx-attachment"
