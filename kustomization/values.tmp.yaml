@@ -28,13 +28,13 @@ appsec:
   #   runAsGroup: 0
   #   seccompProfile:
   #     type: RuntimeDefault
-  # resources:
-  #   requests:
-  #     cpu: "100m"
-  #     memory: "128Mi"
-  #   limits:
-  #     cpu: "200m"
-  #     memory: "256Mi"
+  resources:
+    requests:
+      cpu: "100m"
+      memory: "128Mi"
+    limits:
+      cpu: "200m"
+      memory: "256Mi"
   nginx:
     image:
       repository: "sankalpafernando/openappsec-nginx-attachment"
@@ -95,23 +95,23 @@ controller:
     checkov.io/skip4: "CKV_K8S_22=Default is set by NIC"
     checkov.io/skip5: "CKV_K8S_40=Default is set by NIC"
     checkov.io/skip6: "CKV_K8S_AZURE_WSO2_2=Default is set by NIC"
-  # admissionWebhooks:
-    # createSecretJob:
-    #   resources:
-    #     requests:
-    #       cpu: "100m"
-    #       memory: "128Mi"
-    #     limits:
-    #       cpu: "200m"
-    #       memory: "256Mi"
-    # patchWebhookJob:
-    #   resources:
-    #     requests:
-    #       cpu: "100m"
-    #       memory: "128Mi"
-    #     limits:
-    #       cpu: "200m"
-    #       memory: "256Mi"
+  admissionWebhooks:
+    createSecretJob:
+      resources:
+        requests:
+          cpu: "100m"
+          memory: "128Mi"
+        limits:
+          cpu: "200m"
+          memory: "256Mi"
+    patchWebhookJob:
+      resources:
+        requests:
+          cpu: "100m"
+          memory: "128Mi"
+        limits:
+          cpu: "200m"
+          memory: "256Mi"
     # patch:
     #   securityContext:
     #     runAsNonRoot: false
