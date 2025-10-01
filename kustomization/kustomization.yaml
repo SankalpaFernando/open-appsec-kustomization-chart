@@ -13,13 +13,13 @@ resources:
   - rendered.yaml
   - open-appsec-policy.yaml
 
-patchesStrategicMerge:
+# patchesStrategicMerge:
   # - ingressremover.yaml
-  - admission-patch.yaml
-  - service-account-patch.yaml
+  # - admission-patch.yaml
+  # - service-account-patch.yaml
   # - cluster-role-patch.yaml
   # - postgres-patch.yaml
-  - controller-patch.yaml
+  # - controller-patch.yaml
 patches:
   - path: namespace-patch.json
     target:
