@@ -16,10 +16,6 @@ metrics:
       cpu: "200m"
       memory: "256Mi"
 appsec:
-  securityContext:
-    runAsNonRoot: false
-    runAsUser: 0
-    runAsGroup: 0
   resources:
     requests:
       cpu: "100m"
@@ -35,19 +31,7 @@ defaultBackend:
     limits:
       cpu: "200m"
       memory: "256Mi"
-  containerSecurityContext:
-    runAsNonRoot: false
-    runAsUser: 0
-    runAsGroup: 0
 controller:
-  podSecurityContext:
-    runAsNonRoot: false
-    runAsUser: 0
-    runAsGroup: 0
-  containerSecurityContext:
-    runAsNonRoot: false
-    runAsUser: 0
-    runAsGroup: 0
   resources:
     requests:
       cpu: "100m"
@@ -72,11 +56,6 @@ controller:
         limits:
           cpu: "200m"
           memory: "256Mi"
-    patch:
-      securityContext:
-        runAsNonRoot: false
-        runAsUser: 0
-        runAsGroup: 0
   livenessProbe:
     httpGet:
       path: /healthz
