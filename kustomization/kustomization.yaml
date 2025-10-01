@@ -13,21 +13,21 @@ resources:
   - rendered.yaml
   - open-appsec-policy.yaml
 
-# patchesStrategicMerge:
-  # - ingressremover.yaml
-  # - admission-patch.yaml
-  # - service-account-patch.yaml
-  # - cluster-role-patch.yaml
-  # - postgres-patch.yaml
-  # - controller-patch.yaml
-# patches:
-#   - path: namespace-patch.json
-#     target:
-#       kind: Secret
-#       name: appsec-settings-secret
-#       version: v1
-#   - path: namespace-patch.json
-#     target:
-#       kind: ConfigMap
-#       name: appsec-settings-configmap
-#       version: v1
+patchesStrategicMerge:
+  - ingressremover.yaml
+  - admission-patch.yaml
+  - service-account-patch.yaml
+  - cluster-role-patch.yaml
+  - postgres-patch.yaml
+  - controller-patch.yaml
+patches:
+  - path: namespace-patch.json
+    target:
+      kind: Secret
+      name: appsec-settings-secret
+      version: v1
+  - path: namespace-patch.json
+    target:
+      kind: ConfigMap
+      name: appsec-settings-configmap
+      version: v1
