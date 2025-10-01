@@ -1,7 +1,5 @@
-rbac:
-  create: true
+
 primary:
-  allowPrivilegeEscalation: true
   resources:
     requests:
       cpu: "100m"
