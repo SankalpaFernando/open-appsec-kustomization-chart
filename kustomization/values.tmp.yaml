@@ -22,12 +22,12 @@ metrics:
 
 appsec:
   mode: standalone
-  securityContext:
-    runAsNonRoot: false
-    runAsUser: 0
-    runAsGroup: 0
-    seccompProfile:
-      type: RuntimeDefault
+  # securityContext:
+  #   runAsNonRoot: false
+  #   runAsUser: 0
+  #   runAsGroup: 0
+  #   seccompProfile:
+  #     type: RuntimeDefault
   resources:
     requests:
       cpu: "100m"
@@ -48,26 +48,26 @@ defaultBackend:
     limits:
       cpu: "200m"
       memory: "256Mi"
-  containerSecurityContext:
-    runAsNonRoot: false
-    runAsUser: 0
-    runAsGroup: 0
-    seccompProfile:
-      type: RuntimeDefault
+  # containerSecurityContext:
+  #   runAsNonRoot: false
+  #   runAsUser: 0
+  #   runAsGroup: 0
+  #   seccompProfile:
+  #     type: RuntimeDefault
 
 controller:
-  podSecurityContext:
-    runAsNonRoot: false
-    runAsUser: 0
-    runAsGroup: 0
-    seccompProfile:
-      type: RuntimeDefault
-  containerSecurityContext:
-    runAsNonRoot: false
-    runAsUser: 0
-    runAsGroup: 0
-    seccompProfile:
-      type: RuntimeDefault
+  # podSecurityContext:
+  #   runAsNonRoot: false
+  #   runAsUser: 0
+  #   runAsGroup: 0
+  #   seccompProfile:
+  #     type: RuntimeDefault
+  # containerSecurityContext:
+  #   runAsNonRoot: false
+  #   runAsUser: 0
+  #   runAsGroup: 0
+  #   seccompProfile:
+  #     type: RuntimeDefault
   resources:
     requests:
       cpu: "100m"
@@ -112,13 +112,13 @@ controller:
         limits:
           cpu: "200m"
           memory: "256Mi"
-    patch:
-      securityContext:
-        runAsNonRoot: false
-        runAsUser: 0
-        runAsGroup: 0
-        seccompProfile:
-          type: RuntimeDefault
+    # patch:
+    #   securityContext:
+    #     runAsNonRoot: false
+    #     runAsUser: 0
+    #     runAsGroup: 0
+    #     seccompProfile:
+    #       type: RuntimeDefault
   livenessProbe:
     httpGet:
       path: /healthz
