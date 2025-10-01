@@ -1,24 +1,24 @@
 # rbac:
 #   create: true
 
-primary:
-  # allowPrivilegeEscalation: true
-  resources:
-    requests:
-      cpu: "100m"
-      memory: "128Mi"
-    limits:
-      cpu: "200m"
-      memory: "256Mi"
+# primary:
+#   # allowPrivilegeEscalation: true
+#   resources:
+#     requests:
+#       cpu: "100m"
+#       memory: "128Mi"
+#     limits:
+#       cpu: "200m"
+#       memory: "256Mi"
 
-metrics:
-  resources:
-    requests:
-      cpu: "100m"
-      memory: "128Mi"
-    limits:
-      cpu: "200m"
-      memory: "256Mi"
+# metrics:
+#   resources:
+#     requests:
+#       cpu: "100m"
+#       memory: "128Mi"
+#     limits:
+#       cpu: "200m"
+#       memory: "256Mi"
 
 appsec:
   mode: standalone
@@ -28,13 +28,13 @@ appsec:
   #   runAsGroup: 0
   #   seccompProfile:
   #     type: RuntimeDefault
-  resources:
-    requests:
-      cpu: "100m"
-      memory: "128Mi"
-    limits:
-      cpu: "200m"
-      memory: "256Mi"
+  # resources:
+  #   requests:
+  #     cpu: "100m"
+  #     memory: "128Mi"
+  #   limits:
+  #     cpu: "200m"
+  #     memory: "256Mi"
   nginx:
     image:
       repository: "sankalpafernando/openappsec-nginx-attachment"
@@ -68,13 +68,13 @@ controller:
   #   runAsGroup: 0
   #   seccompProfile:
   #     type: RuntimeDefault
-  resources:
-    requests:
-      cpu: "100m"
-      memory: "128Mi"
-    limits:
-      cpu: "200m"
-      memory: "256Mi"
+  # resources:
+  #   requests:
+  #     cpu: "100m"
+  #     memory: "128Mi"
+  #   limits:
+  #     cpu: "200m"
+  #     memory: "256Mi"
   ingressClass: choreo-external-ingress-class
   ingressClassResource:
     name: choreo-external-ingress-class
