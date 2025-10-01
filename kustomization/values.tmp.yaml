@@ -28,13 +28,13 @@ appsec:
   #   runAsGroup: 0
   #   seccompProfile:
   #     type: RuntimeDefault
-  # resources:
-  #   requests:
-  #     cpu: "100m"
-  #     memory: "128Mi"
-  #   limits:
-  #     cpu: "200m"
-  #     memory: "256Mi"
+  resources:
+    requests:
+      cpu: "100m"
+      memory: "128Mi"
+    limits:
+      cpu: "200m"
+      memory: "256Mi"
   nginx:
     image:
       repository: "sankalpafernando/openappsec-nginx-attachment"
@@ -48,12 +48,12 @@ appsec:
 #     limits:
 #       cpu: "200m"
 #       memory: "256Mi"
-  # containerSecurityContext:
-  #   runAsNonRoot: false
-  #   runAsUser: 0
-  #   runAsGroup: 0
-  #   seccompProfile:
-  #     type: RuntimeDefault
+#   containerSecurityContext:
+#     runAsNonRoot: false
+#     runAsUser: 0
+#     runAsGroup: 0
+#     seccompProfile:
+#       type: RuntimeDefault
 
 controller:
   # podSecurityContext:
