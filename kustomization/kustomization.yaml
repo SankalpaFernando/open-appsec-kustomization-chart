@@ -17,7 +17,7 @@ patchesStrategicMerge:
   # - ingressremover.yaml
   - admission-patch.yaml
   - service-account-patch.yaml
-  - cluster-role-patch.yaml
+  # - cluster-role-patch.yaml
   # - postgres-patch.yaml
   - controller-patch.yaml
 patches:
